@@ -5,7 +5,7 @@ Sentry.init({
 	// Adds request headers and IP for users, for more info visit:
 	// https://docs.sentry.io/platforms/javascript/guides/astro/configuration/options/#sendDefaultPii
 	sendDefaultPii: false,
-  
+
 	tracesSampleRate: 0, // disable tracing unless needed
 	replaysSessionSampleRate: 0,
 	replaysOnErrorSampleRate: 0,
