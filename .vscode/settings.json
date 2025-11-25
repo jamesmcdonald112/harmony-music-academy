@@ -1,0 +1,13 @@
+{
+	"editor.formatOnSave": true,
+
+	// Biome = default formatter for everything
+	"editor.defaultFormatter": "biomejs.biome",
+
+	// Prettier = ONLY for .astro files
+	"[astro]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"cSpell.words": ["gsap"]
+}
