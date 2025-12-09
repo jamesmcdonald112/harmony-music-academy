@@ -1,4 +1,161 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
-@plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
+
+/* ------------------------
+   THEME
+------------------------- */
+@theme {
+  --font-display: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-primary: var(--color-blue-600);
+  --color-primary-hover: var(--color-blue-700);
+  --color-secondary: var(--color-sky-500);
+  --color-accent: var(--color-amber-500);
+
+  --color-muted: var(--color-gray-400);
+  --color-muted-foreground: var(--color-gray-600);
+
+  --color-text-primary: var(--color-gray-900);
+  --color-text-muted: var(--color-gray-400);
+  --color-border: var(--color-gray-300);
+
+  --color-error: var(--color-red-600);
+
+  --spacing-section: 5%;
+  --spacing-inner: 1.5rem;
+
+  --radius-base: 0.5rem;
+}
+
+/* ------------------------
+   COMPONENTS
+------------------------- */
+@layer components {
+
+  /* ----- Buttons ----- */
+  .btn {
+    @apply
+      inline-flex items-center justify-center
+      font-medium
+      rounded-base
+      transform-gpu
+      transition-transform duration-200 ease-out;
+  }
+
+  .btn-primary {
+    @apply
+      w-full
+      px-3.5 py-2.5 text-sm
+      font-medium
+      bg-primary text-white
+      shadow-sm
+      hover:bg-primary-hover
+      hover:-translate-y-0.5 hover:shadow-lg
+      active:translate-y-0.5 active:shadow-xs
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+      disabled:opacity-60 disabled:cursor-not-allowed
+      disabled:translate-y-0 disabled:shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply
+      px-4 py-2
+      font-medium
+      bg-secondary text-white
+      shadow-sm
+      hover:-translate-y-0.5 hover:shadow-lg
+      active:translate-y-0.5 active:shadow-xs
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-secondary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+      disabled:opacity-60 disabled:cursor-not-allowed
+      disabled:translate-y-0 disabled:shadow-sm;
+  }
+
+  .btn-muted {
+    @apply
+      px-4 py-2
+      font-medium
+      bg-muted text-muted-foreground
+      shadow-sm
+      hover:-translate-y-0.5 hover:shadow-lg
+      active:translate-y-0.5 active:shadow-xs
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-muted-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+      disabled:opacity-60 disabled:cursor-not-allowed
+      disabled:translate-y-0 disabled:shadow-sm;
+  }
+
+  /* ----- FORM ----- */
+
+  /* ----- Field ----- */
+  .form-field {
+    @apply mt-2.5
+  }
+
+
+  /* ----- Inputs ----- */
+  .form-input {
+    @apply
+      block w-full
+      px-3.5 py-2
+      text-base text-text-primary
+      bg-white
+      rounded-base
+      border border-border
+      placeholder:text-muted
+      hover:border-primary/40
+      transition-colors duration-150 ease-out
+      focus:border-transparent
+      focus:ring-2 focus:ring-primary/30 focus:shadow-sm;
+  }
+
+  /* ----- Textarea ----- */
+  .form-textarea {
+    @apply
+      block w-full
+      px-3.5 py-2
+      text-base text-text-primary
+      bg-white
+      rounded-base
+      border border-border
+      placeholder:text-muted
+      hover:border-primary/40
+      transition-colors duration-150 ease-out
+      focus:border-transparent
+      focus:ring-2 focus:ring-primary/30 focus:shadow-sm
+      min-h-32;
+  }
+
+  /* ----- Label ----- */
+  .form-label {
+    @apply 
+      block 
+      text-sm/6 font-semibold text-text-primary;
+  }
+
+    /* ----- Error ----- */
+
+  .form-error {
+    @apply
+      mt-0.5
+      text-xs
+      text-red-600
+      font-medium
+      animate-in fade-in-0 duration-1500;
+;
+  }
+
+    .form-input-error {
+    @apply
+      border-error
+      ring-1 ring-error
+      focus:border-error
+      focus:ring-2 focus:ring-error  /* force full override */
+      focus:shadow-none                  /* optional: kill blue shadow */
+      transition-all duration-300;
+  }
+
+}
