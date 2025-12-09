@@ -9,5 +9,11 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 
-	"cSpell.words": ["gsap"]
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	"[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+	"cSpell.words": ["describedby", "gsap", "sonner"]
 }
