@@ -1,5 +1,12 @@
-import { describe, expect, beforeEach, afterEach, test, vi } from "vitest";
-import type React from "react";
+import React from "react";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
+import type { FieldErrors } from "@/types/forms";
+
+type InfoPackFormProps = {
+	onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+	errors: FieldErrors;
+	loading: boolean;
+};
 
 const navigateMock = vi.fn();
 const sendInfoPackMock = vi.fn();
@@ -17,7 +24,7 @@ const isActionErrorMock = vi.fn(
 );
 const toastSuccessMock = vi.fn();
 const toastErrorMock = vi.fn();
-const InfoPackFormReactMock = vi.fn((props: any) => null);
+const InfoPackFormReactMock = vi.fn((_props: InfoPackFormProps) => null);
 let consoleErrorSpy: ReturnType<typeof vi.spyOn> | null = null;
 
 vi.mock("astro/virtual-modules/transitions-router.js", () => ({
@@ -38,21 +45,25 @@ vi.mock("sonner", () => ({
 	Toaster: () => null,
 }));
 
-vi.mock("../../../../src/features/InfoPack/components/InfoPackFormReact", () => ({
-	__esModule: true,
-	default: InfoPackFormReactMock,
-}));
+vi.mock(
+	"../../../../src/features/InfoPack/components/InfoPackFormReact",
+	() => ({
+		__esModule: true,
+		default: InfoPackFormReactMock,
+	}),
+);
 
-const useStateMocks: Array<ReturnType<typeof vi.fn>> = [];
+type MockSetter = ReturnType<typeof vi.fn>;
+const useStateMocks: MockSetter[] = [];
 
 vi.mock("react", async () => {
 	const actual = await vi.importActual<typeof import("react")>("react");
 	return {
 		...actual,
-		useState: (initial: any) => {
+		useState: <T,>(initial: T) => {
 			const setter = vi.fn();
 			useStateMocks.push(setter);
-			return [initial, setter] as [typeof initial, typeof setter];
+			return [initial, setter] as [T, MockSetter];
 		},
 	};
 });
@@ -69,7 +80,8 @@ const OriginalFormData = globalThis.FormData;
 describe("InfoPackFormIsland", () => {
 	beforeEach(() => {
 		useStateMocks.length = 0;
-		(globalThis as any).FormData = MockFormData as unknown as typeof FormData;
+		(globalThis as unknown as { FormData: typeof FormData }).FormData =
+			MockFormData as unknown as typeof FormData;
 		navigateMock.mockClear();
 		sendInfoPackMock.mockReset();
 		isInputErrorMock.mockClear();
@@ -80,30 +92,29 @@ describe("InfoPackFormIsland", () => {
 	});
 
 	afterEach(() => {
-		(globalThis as any).FormData = OriginalFormData;
+		(globalThis as unknown as { FormData: typeof FormData }).FormData =
+			OriginalFormData;
 		consoleErrorSpy?.mockRestore();
 	});
 
-	async function renderIsland() {
+	async function renderIsland(): Promise<InfoPackFormProps> {
 		// Lazy import to ensure mocks are applied
 		const { default: InfoPackFormIsland } = await import(
 			"../../../../src/features/InfoPack/islands/InfoPackFormIsland"
 		);
-		const tree = InfoPackFormIsland() as any;
-		const children = Array.isArray(tree?.props?.children)
-			? tree.props.children
-			: [tree?.props?.children];
+		type WrapperElement = React.ReactElement<{ children?: React.ReactNode }>;
+		const tree = InfoPackFormIsland() as WrapperElement | null;
+		const children = React.Children.toArray(tree?.props?.children ?? []);
 		const infoPackChild = children.find(
-			(child: any) => child?.type === InfoPackFormReactMock,
-		);
+			(child: unknown) =>
+				typeof child === "object" &&
+				child !== null &&
+				(child as React.ReactElement).type === InfoPackFormReactMock,
+		) as React.ReactElement<InfoPackFormProps> | undefined;
 		if (!infoPackChild) {
 			throw new Error("InfoPackFormReact not rendered");
 		}
-		return infoPackChild.props as {
-			onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
-			errors: unknown;
-			loading: boolean;
-		};
+		return infoPackChild.props;
 	}
 
 	test("submits successfully and navigates on success response", async () => {
