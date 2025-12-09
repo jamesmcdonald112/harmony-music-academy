@@ -7,7 +7,7 @@ export default function ToastTest() {
 		<button
 			type="button"
 			onClick={() => toast("Toast is working!")}
-			className="px-4 py-2 border rounded"
+			className="rounded border px-4 py-2"
 		>
 			Show Test Toast
 		</button>

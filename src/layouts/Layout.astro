@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import "sonner/dist/styles.css";
 import "../styles/global.css";
 
 interface Props {
@@ -6,17 +8,42 @@ interface Props {
   description: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title = "Music School",
+  description = "Children’s music lessons for ages 4–18.",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Charset FIRST for best practices -->
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+
+    <!-- Mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Basic SEO -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Prevent auto dark mode if you’re not supporting it -->
+    <meta name="color-scheme" content="light" />
+
+    <!-- Theme color (optional but improves Lighthouse) -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Favicons (add your own later) -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <ClientRouter />
+    <slot name="head" />
+
+    <!-- Preconnect to improve performance (optional for now) -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
   </head>
-  <body class="antialiased">
+
+  <body class="bg-white text-gray-900 antialiased">
     <slot />
   </body>
 </html>

@@ -108,8 +108,9 @@
       placeholder:text-muted
       hover:border-primary/40
       transition-colors duration-150 ease-out
+      focus-visible:outline-none
       focus:border-transparent
-      focus:ring-2 focus:ring-primary/30 focus:shadow-sm;
+      focus:ring-2 focus:ring-primary focus:shadow-sm;
   }
 
   /* ----- Textarea ----- */
@@ -124,8 +125,9 @@
       placeholder:text-muted
       hover:border-primary/40
       transition-colors duration-150 ease-out
+      focus-visible:outline-none
       focus:border-transparent
-      focus:ring-2 focus:ring-primary/30 focus:shadow-sm
+      focus:ring-2 focus:ring-primary focus:shadow-sm
       min-h-32;
   }
 
@@ -140,21 +142,21 @@
 
   .form-error {
     @apply
-      mt-0.5
+      mt-1 h-2
       text-xs
       text-red-600
       font-medium
-      animate-in fade-in-0 duration-1500;
-;
+      animate-in fade-in-0 transition-all duration-1500;
   }
 
-    .form-input-error {
+ .form-input-error {
     @apply
-      border-error
-      ring-1 ring-error
+      border-transparent
+      hover:border-error/80
+      ring-1 ring-error/80
       focus:border-error
-      focus:ring-2 focus:ring-error  /* force full override */
-      focus:shadow-none                  /* optional: kill blue shadow */
+      focus:ring-2 focus:ring-error/80
+      focus:shadow-none
       transition-all duration-300;
   }
 
