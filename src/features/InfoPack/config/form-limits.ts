@@ -1,6 +1,6 @@
 export const FORM_LIMITS = {
 	fullName: {
-		min: 1,
+		min: 2,
 		max: 80,
 	},
 	email: {
