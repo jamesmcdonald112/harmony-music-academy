@@ -1,5 +1,6 @@
 import { ActionError, defineAction } from "astro:actions";
 import * as Sentry from "@sentry/astro";
+import { INFO_PACK_ERRORS } from "../config/error-messages";
 import { infoPackSchema } from "../schemas/infoPack.schema";
 
 export const sendInfoPack = defineAction({
@@ -23,7 +24,7 @@ export const sendInfoPack = defineAction({
 
 			throw new ActionError({
 				code: "INTERNAL_SERVER_ERROR",
-				message: "We couldn’t send your request. Please try again.",
+				message: INFO_PACK_ERRORS.action.internalServerError,
 			});
 		}
 	},
