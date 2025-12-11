@@ -11,7 +11,7 @@ export default function MessageInput({ maxLength, error }: MessageInputProps) {
 	return (
 		<div>
 			<label htmlFor="message" className="form-label">
-				Any questions?
+				Any questions? (optional)
 			</label>
 			<div className="form-field">
 				<textarea
@@ -20,7 +20,7 @@ export default function MessageInput({ maxLength, error }: MessageInputProps) {
 					name="message"
 					rows={4}
 					maxLength={maxLength}
-					placeholder="My son is interested in piano lessons, what options are available?"
+					placeholder="My daughter is interested in piano lessons, what options are available?"
 					aria-invalid={!!error}
 					aria-describedby={error ? "message-error" : undefined}
 				/>

@@ -35,7 +35,6 @@ export default function InfoPackFormIsland() {
 			}
 			// Success
 			if (!error && data?.success) {
-				toast.success(data?.message ?? "Success");
 				navigate("/thank-you");
 				return;
 			}

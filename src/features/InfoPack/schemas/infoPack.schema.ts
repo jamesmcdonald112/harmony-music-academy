@@ -24,9 +24,9 @@ export const infoPackSchema = z.object({
 	phone: z.string().trim().regex(PHONE.regex, "Enter a valid phone number"),
 	studentAge: z.coerce
 		.number()
-		.int()
-		.min(STUDENT_AGE.min, "Age must be at least 1")
-		.max(STUDENT_AGE.max, "Age too high")
+		.int("Age must be a whole number")
+		.min(STUDENT_AGE.min, `Age must be more than ${STUDENT_AGE.min}`)
+		.max(STUDENT_AGE.max, `Age must be less than ${STUDENT_AGE.max}`)
 		.optional(),
-	message: z.string().trim().max(MESSAGE.max, "Message is too long").optional(),
+	message: z.string().trim().max(MESSAGE.max, `Message must be less than ${MESSAGE.max} characters`).optional(),
 });

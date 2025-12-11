@@ -138,7 +138,6 @@ describe("InfoPackFormIsland", () => {
 		expect(setLoadingMock).toHaveBeenCalledWith(false);
 		expect(setErrorsMock).toHaveBeenCalledWith({});
 		expect(sendInfoPackMock).toHaveBeenCalledWith(expect.any(MockFormData));
-		expect(toastSuccessMock).toHaveBeenCalledWith("Info sent");
 		expect(navigateMock).toHaveBeenCalledWith("/thank-you");
 	});
 

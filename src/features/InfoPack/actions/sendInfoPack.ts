@@ -16,12 +16,14 @@ export const sendInfoPack = defineAction({
 		} catch (err: unknown) {
 			Sentry.captureException(err);
 
-			const message =
-				err instanceof Error ? err.message : "Failed to send email";
+			// If it's already an ActionError, rethrow to parent so it can be displayed in toast error message.
+			if (err instanceof ActionError) {
+				throw err;
+			}
 
 			throw new ActionError({
 				code: "INTERNAL_SERVER_ERROR",
-				message,
+				message: "We couldn’t send your request. Please try again.",
 			});
 		}
 	},
