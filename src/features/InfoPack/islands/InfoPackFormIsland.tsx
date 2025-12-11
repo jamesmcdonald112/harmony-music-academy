@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Toaster, toast } from "sonner";
 import type { FieldErrors } from "@/types/forms";
 import InfoPackFormReact from "../components/InfoPackFormReact";
+import { mapActionError } from "../utils/mapActionError";
 
 export default function InfoPackFormIsland() {
 	const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +30,7 @@ export default function InfoPackFormIsland() {
 
 				if (isActionError(error)) {
 					console.error("Action failed:", error.code);
-					toast.error(error.message || "Server error");
+					toast.error(mapActionError(error.code as string));
 					return;
 				}
 			}
@@ -40,7 +41,7 @@ export default function InfoPackFormIsland() {
 			}
 		} catch (err: unknown) {
 			console.error("UNEXPECTED ERROR:", err);
-			toast.error("Unexpected error");
+			toast.error(mapActionError("UNKNOWN"));
 		} finally {
 			setLoading(false);
 		}
