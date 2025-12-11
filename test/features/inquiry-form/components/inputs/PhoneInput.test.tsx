@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { expect, test } from "vitest";
 
 import PhoneInput from "../../../../../src/features/InfoPack/components/inputs/PhoneInput";
+import { INFO_PACK_PLACEHOLDERS } from "../../../../../src/features/InfoPack/config/placeholders";
 
 test("renders phone input without error styling", async () => {
 	const html = renderToStaticMarkup(<PhoneInput error={undefined} />);
@@ -11,7 +12,7 @@ test("renders phone input without error styling", async () => {
 	expect(html).toContain('type="tel"');
 	expect(html).toContain('inputMode="tel"');
 	expect(html).toContain("required");
-	expect(html).toContain('placeholder="087 123 4567"');
+	expect(html).toContain(`placeholder="${INFO_PACK_PLACEHOLDERS.phone}"`);
 
 	expect(html).not.toContain("form-input-error");
 	expect(html).toContain('aria-invalid="false"');

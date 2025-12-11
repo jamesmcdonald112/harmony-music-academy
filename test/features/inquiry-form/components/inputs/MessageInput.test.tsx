@@ -3,6 +3,7 @@ import { expect, test } from "vitest";
 
 import MessageInput from "../../../../../src/features/InfoPack/components/inputs/MessageInput";
 import { FORM_LIMITS } from "../../../../../src/features/InfoPack/config/form-limits";
+import { INFO_PACK_PLACEHOLDERS } from "../../../../../src/features/InfoPack/config/placeholders";
 
 test("renders message textarea without error styling", async () => {
 	const html = renderToStaticMarkup(
@@ -13,9 +14,7 @@ test("renders message textarea without error styling", async () => {
 	expect(html).toContain('name="message"');
 	expect(html).toContain('rows="4"');
 	expect(html).toContain(`maxLength="${FORM_LIMITS.message.max}"`);
-	expect(html).toContain(
-		'placeholder="My son is interested in piano lessons, what options are available?"',
-	);
+	expect(html).toContain(`placeholder="${INFO_PACK_PLACEHOLDERS.message}"`);
 
 	expect(html).not.toContain("form-input-error");
 	expect(html).toContain('aria-invalid="false"');

@@ -3,6 +3,7 @@ import { expect, test } from "vitest";
 
 import StudentAgeInput from "../../../../../src/features/InfoPack/components/inputs/StudentAgeInput";
 import { FORM_LIMITS } from "../../../../../src/features/InfoPack/config/form-limits";
+import { INFO_PACK_PLACEHOLDERS } from "../../../../../src/features/InfoPack/config/placeholders";
 
 test("renders student age input without error styling", async () => {
 	const html = renderToStaticMarkup(<StudentAgeInput error={undefined} />);
@@ -14,7 +15,7 @@ test("renders student age input without error styling", async () => {
 	expect(html).toContain(`max="${FORM_LIMITS.studentAge.max}"`);
 	expect(html).toContain('inputMode="numeric"');
 	expect(html).toContain('autoComplete="off"');
-	expect(html).toContain('placeholder="8"');
+	expect(html).toContain(`placeholder="${INFO_PACK_PLACEHOLDERS.studentAge}"`);
 
 	expect(html).not.toContain("form-input-error");
 	expect(html).toContain('aria-invalid="false"');

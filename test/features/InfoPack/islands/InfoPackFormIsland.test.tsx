@@ -1,6 +1,7 @@
 import React from "react";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import type { FieldErrors } from "@/types/forms";
+import { INFO_PACK_ERRORS } from "../../../../src/features/InfoPack/config/error-messages";
 
 type InfoPackFormProps = {
 	onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
@@ -187,7 +188,9 @@ describe("InfoPackFormIsland", () => {
 		} as unknown as React.FormEvent<HTMLFormElement>);
 
 		expect(isActionErrorMock).toHaveBeenCalled();
-		expect(toastErrorMock).toHaveBeenCalledWith("Server error");
+		expect(toastErrorMock).toHaveBeenCalledWith(
+			INFO_PACK_ERRORS.action.internalServerError,
+		);
 		expect(setErrorsMock).toHaveBeenCalledWith({});
 		expect(setLoadingMock).toHaveBeenCalledWith(true);
 		expect(setLoadingMock).toHaveBeenCalledWith(false);
@@ -205,7 +208,9 @@ describe("InfoPackFormIsland", () => {
 			currentTarget: {},
 		} as unknown as React.FormEvent<HTMLFormElement>);
 
-		expect(toastErrorMock).toHaveBeenCalledWith("Unexpected error");
+		expect(toastErrorMock).toHaveBeenCalledWith(
+			INFO_PACK_ERRORS.action.unknown,
+		);
 		expect(setLoadingMock).toHaveBeenCalledWith(true);
 		expect(setLoadingMock).toHaveBeenCalledWith(false);
 		expect(navigateMock).not.toHaveBeenCalled();

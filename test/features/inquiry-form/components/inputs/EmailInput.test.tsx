@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { expect, test } from "vitest";
 
 import EmailInput from "../../../../../src/features/InfoPack/components/inputs/EmailInput";
+import { INFO_PACK_PLACEHOLDERS } from "../../../../../src/features/InfoPack/config/placeholders";
 
 test("renders email input without error styling", async () => {
 	const html = renderToStaticMarkup(<EmailInput error={undefined} />);
@@ -12,7 +13,7 @@ test("renders email input without error styling", async () => {
 	expect(html).toContain('type="email"');
 	expect(html).toContain("required");
 	expect(html).toContain('inputMode="email"');
-	expect(html).toContain('placeholder="john@example.com"');
+	expect(html).toContain(`placeholder="${INFO_PACK_PLACEHOLDERS.email}"`);
 
 	// No error class
 	expect(html).not.toContain("form-input-error");
