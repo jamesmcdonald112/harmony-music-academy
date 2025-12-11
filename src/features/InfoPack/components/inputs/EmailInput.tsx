@@ -1,3 +1,4 @@
+import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
 interface EmailInputProps {
@@ -21,7 +22,7 @@ export default function EmailInput({ error }: EmailInputProps) {
 					inputMode="email"
 					required
 					autoComplete="email"
-					placeholder="john@example.com"
+					placeholder={INFO_PACK_PLACEHOLDERS.email}
 					aria-invalid={!!error}
 					aria-describedby={error ? "email-error" : undefined}
 				/>

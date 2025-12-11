@@ -1,3 +1,4 @@
+import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
 interface MessageInputProps {
@@ -20,7 +21,7 @@ export default function MessageInput({ maxLength, error }: MessageInputProps) {
 					name="message"
 					rows={4}
 					maxLength={maxLength}
-					placeholder="My daughter is interested in piano lessons, what options are available?"
+					placeholder={INFO_PACK_PLACEHOLDERS.message}
 					aria-invalid={!!error}
 					aria-describedby={error ? "message-error" : undefined}
 				/>

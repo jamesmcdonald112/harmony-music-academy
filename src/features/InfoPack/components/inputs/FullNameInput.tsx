@@ -1,3 +1,4 @@
+import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
 interface FullNameInputProps {
@@ -20,7 +21,7 @@ export default function FullNameInput({ error }: FullNameInputProps) {
 					type="text"
 					required
 					autoComplete="name"
-					placeholder="John Doe"
+					placeholder={INFO_PACK_PLACEHOLDERS.fullName}
 					aria-invalid={!!error}
 					aria-describedby={error ? "fullName-error" : undefined}
 				/>

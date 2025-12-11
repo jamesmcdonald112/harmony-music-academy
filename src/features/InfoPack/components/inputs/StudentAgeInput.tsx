@@ -1,4 +1,5 @@
 import { FORM_LIMITS } from "../../config/form-limits";
+import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
 const { min, max } = FORM_LIMITS.studentAge;
@@ -25,7 +26,7 @@ export default function StudentAgeInput({ error }: StudentAgeInputProps) {
 					max={max}
 					inputMode="numeric"
 					autoComplete="off"
-					placeholder="8"
+					placeholder={INFO_PACK_PLACEHOLDERS.studentAge}
 					aria-invalid={!!error}
 					aria-describedby={error ? "studentAge-error" : undefined}
 				/>

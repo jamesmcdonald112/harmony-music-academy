@@ -1,3 +1,4 @@
+import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
 interface PhoneInputProps {
@@ -21,7 +22,7 @@ export default function PhoneInput({ error }: PhoneInputProps) {
 					inputMode="tel"
 					required
 					autoComplete="tel"
-					placeholder="087 123 4567"
+					placeholder={INFO_PACK_PLACEHOLDERS.phone}
 					aria-invalid={!!error}
 					aria-describedby={error ? "phone-error" : undefined}
 				/>
