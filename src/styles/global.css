@@ -14,11 +14,11 @@
   --color-secondary: var(--color-sky-500);
   --color-accent: var(--color-amber-500);
 
-  --color-muted: var(--color-gray-400);
+  --color-muted: var(--color-gray-200);
   --color-muted-foreground: var(--color-gray-600);
 
   --color-text-primary: var(--color-gray-900);
-  --color-text-muted: var(--color-gray-400);
+  --color-text-muted: var(--color-gray-600);
   --color-border: var(--color-gray-300);
 
   --color-error: var(--color-red-600);
