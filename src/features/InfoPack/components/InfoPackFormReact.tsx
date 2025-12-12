@@ -22,17 +22,17 @@ export default function InfoPackFormReact({
 	const MESSAGE_MAX = FORM_LIMITS.message.max;
 
 	return (
-		<div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+		<div className="isolate bg-background px-6 py-24 sm:py-32 lg:px-8">
 			<div
 				aria-hidden="true"
 				className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
 			/>
 
 			<div className="mx-auto max-w-2xl text-center">
-				<h2 className="text-4xl font-semibold tracking-tight text-balance text-text-primary sm:text-5xl">
+				<h2 className="text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl">
 					Get Your Lesson Info Pack
 				</h2>
-				<p className="mt-2 text-lg/8 text-text-muted">
+				<p className="mt-2 text-lg/8 text-muted-foreground">
 					Instant guide with pricing, timetable and next steps.
 				</p>
 			</div>

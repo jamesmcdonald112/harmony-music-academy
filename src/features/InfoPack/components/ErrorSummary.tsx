@@ -20,17 +20,20 @@ export default function ErrorSummary({ fieldErrors }: ErrorSummaryProps) {
 	return (
 		<div
 			aria-live="polite"
-			className="mb-4 rounded border border-red-200 bg-red-50 p-4"
+			className="mb-4 rounded border border-destructive/20 bg-destructive/10 p-4"
 		>
-			<p className="font-semibold text-red-800">
+			<p className="font-semibold text-destructive">
 				Please correct the errors below:
 			</p>
 
-			<ul className="mt-2 ml-5 list-disc text-red-700">
+			<ul className="mt-2 ml-5 list-disc text-destructive/90">
 				{Object.entries(fieldErrors).map(([field, errs]) =>
 					errs ? (
 						<li key={field}>
-							<a href={`#${field}`}>
+							<a
+								href={`#${field}`}
+								className="text-destructive font-medium"
+							>
 								{labels[field] ?? field}: {errs[0]}
 							</a>
 						</li>

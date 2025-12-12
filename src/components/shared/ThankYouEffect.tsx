@@ -26,9 +26,16 @@ export default function () {
 
 	return (
 		<Toaster
-			richColors
 			position="top-right"
-			toastOptions={{ duration: 4000 }}
+			toastOptions={{
+				duration: 4000,
+				style: {
+					background: "var(--color-success)",
+					color: "var(--color-success-foreground)",
+					border: "1px solid var(--color-border)",
+					fontWeight: 500,
+				},
+			}}
 		/>
 	);
 }

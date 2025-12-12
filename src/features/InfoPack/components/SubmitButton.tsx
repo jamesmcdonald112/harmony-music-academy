@@ -8,8 +8,9 @@ export default function SubmitButton({
 	label = "Send",
 }: SubmitButtonProps) {
 	return (
-		<button type="submit" className="btn btn-primary" disabled={loading}>
+		<button type="submit" className="btn btn-primary" disabled={loading} aria-busy={loading}>
 			{loading ? (
+				<>
 				<svg
 					className="h-5 w-5 animate-spin text-white"
 					viewBox="0 0 24 24"
@@ -31,6 +32,8 @@ export default function SubmitButton({
 						d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
 					/>
 				</svg>
+				<span className="sr-only">Sending…</span>
+				</>
 			) : (
 				label
 			)}

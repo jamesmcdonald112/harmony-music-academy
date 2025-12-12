@@ -6,27 +6,39 @@
    THEME
 ------------------------- */
 @theme {
-  --font-display: "Inter", sans-serif;
-  --font-body: "Inter", sans-serif;
+  /* radius */
+  --radius: 0.5rem;
 
+  /* base */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-gray-900);
+
+  /* brand */
   --color-primary: var(--color-blue-600);
   --color-primary-hover: var(--color-blue-700);
-  --color-secondary: var(--color-sky-500);
-  --color-accent: var(--color-amber-500);
+  --color-primary-foreground: var(--color-white);
 
-  --color-muted: var(--color-gray-200);
+  --color-secondary: var(--color-sky-500);
+  --color-secondary-foreground: var(--color-white);
+
+  --color-accent: var(--color-amber-500);
+  --color-accent-foreground: var(--color-white);
+
+  /* muted surfaces */
+  --color-muted: var(--color-gray-100);
   --color-muted-foreground: var(--color-gray-600);
 
-  --color-text-primary: var(--color-gray-900);
-  --color-text-muted: var(--color-gray-600);
+  /* borders & inputs */
   --color-border: var(--color-gray-300);
+  --color-input: var(--color-gray-300);
+  --color-ring: var(--color-blue-600);
 
-  --color-error: var(--color-red-600);
+  /* states */
+  --color-success: var(--color-green-100);
+  --color-success-foreground: var(--color-green-800);
 
-  --spacing-section: 5%;
-  --spacing-inner: 1.5rem;
-
-  --radius-base: 0.5rem;
+  --color-destructive: var(--color-red-600);
+  --color-destructive-foreground: var(--color-white);
 }
 
 /* ------------------------
@@ -39,7 +51,7 @@
     @apply
       inline-flex items-center justify-center
       font-medium
-      rounded-base
+      rounded-(--radius)
       transform-gpu
       transition-transform duration-200 ease-out;
   }
@@ -49,7 +61,7 @@
       w-full
       px-3.5 py-2.5 text-sm
       font-medium
-      bg-primary text-white
+      bg-primary text-primary-foreground
       shadow-sm
       hover:bg-primary-hover
       hover:-translate-y-0.5 hover:shadow-lg
@@ -64,7 +76,7 @@
     @apply
       px-4 py-2
       font-medium
-      bg-secondary text-white
+      bg-secondary text-secondary-foreground
       shadow-sm
       hover:-translate-y-0.5 hover:shadow-lg
       active:translate-y-0.5 active:shadow-xs
@@ -101,11 +113,11 @@
     @apply
       block w-full
       px-3.5 py-2
-      text-base text-text-primary
-      bg-white
-      rounded-base
+      text-base text-foreground
+      bg-background
+      rounded-(--radius)
       border border-border
-      placeholder:text-muted
+      placeholder:text-muted-foreground
       hover:border-primary/40
       transition-colors duration-150 ease-out
       focus-visible:outline-none
@@ -118,11 +130,11 @@
     @apply
       block w-full
       px-3.5 py-2
-      text-base text-text-primary
-      bg-white
-      rounded-base
+      text-base text-foreground
+      bg-background
+      rounded-(--radius)
       border border-border
-      placeholder:text-muted
+      placeholder:text-muted-foreground
       hover:border-primary/40
       transition-colors duration-150 ease-out
       focus-visible:outline-none
@@ -135,7 +147,7 @@
   .form-label {
     @apply 
       block 
-      text-sm/6 font-semibold text-text-primary;
+      text-sm/6 font-semibold text-foreground;
   }
 
     /* ----- Error ----- */
@@ -144,7 +156,7 @@
     @apply
       mt-1 h-2
       text-xs
-      text-red-600
+      text-destructive
       font-medium
       animate-in fade-in-0 transition-all duration-1500;
   }
@@ -152,12 +164,11 @@
  .form-input-error {
     @apply
       border-transparent
-      hover:border-error/80
-      ring-1 ring-error/80
-      focus:border-error
-      focus:ring-2 focus:ring-error/80
+      hover:border-destructive/80
+      ring-1 ring-destructive/80
+      focus:border-destructive
+      focus:ring-2 focus:ring-destructive/80
       focus:shadow-none
       transition-all duration-300;
   }
-
 }

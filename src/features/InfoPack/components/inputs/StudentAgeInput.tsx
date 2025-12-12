@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/Input";
 import { FORM_LIMITS } from "../../config/form-limits";
 import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
@@ -9,16 +10,13 @@ interface StudentAgeInputProps {
 }
 
 export default function StudentAgeInput({ error }: StudentAgeInputProps) {
-	const inputClass = `form-input${error ? " form-input-error" : ""}`;
-
 	return (
 		<div>
 			<label htmlFor="studentAge" className="form-label">
 				Student age (optional)
 			</label>
 			<div className="form-field">
-				<input
-					className={inputClass}
+				<Input
 					id="studentAge"
 					name="studentAge"
 					type="number"
@@ -27,6 +25,7 @@ export default function StudentAgeInput({ error }: StudentAgeInputProps) {
 					inputMode="numeric"
 					autoComplete="off"
 					placeholder={INFO_PACK_PLACEHOLDERS.studentAge}
+					error={!!error}
 					aria-invalid={!!error}
 					aria-describedby={error ? "studentAge-error" : undefined}
 				/>

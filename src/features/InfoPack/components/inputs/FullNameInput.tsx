@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/Input";
 import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
@@ -6,22 +7,20 @@ interface FullNameInputProps {
 }
 
 export default function FullNameInput({ error }: FullNameInputProps) {
-	const inputClass = `form-input${error ? " form-input-error" : ""}`;
-
 	return (
 		<div>
 			<label htmlFor="fullName" className="form-label">
 				Full name
 			</label>
 			<div className="form-field">
-				<input
-					className={inputClass}
+				<Input
 					id="fullName"
 					name="fullName"
 					type="text"
 					required
 					autoComplete="name"
 					placeholder={INFO_PACK_PLACEHOLDERS.fullName}
+					error={!!error}
 					aria-invalid={!!error}
 					aria-describedby={error ? "fullName-error" : undefined}
 				/>

@@ -1,3 +1,4 @@
+import { Input } from "@/components/ui/Input";
 import { INFO_PACK_PLACEHOLDERS } from "../../config/placeholders";
 import FormError from "./FormError";
 
@@ -6,29 +7,28 @@ interface EmailInputProps {
 }
 
 export default function EmailInput({ error }: EmailInputProps) {
-	const inputClass = `form-input${error ? " form-input-error" : ""}`;
+  return (
+    <div>
+      <label htmlFor="email" className="form-label">
+        Email
+      </label>
 
-	return (
-		<div>
-			<label htmlFor="email" className="form-label">
-				Email
-			</label>
-			<div className="form-field">
-				<input
-					className={inputClass}
-					id="email"
-					type="email"
-					name="email"
-					inputMode="email"
-					required
-					autoComplete="email"
-					placeholder={INFO_PACK_PLACEHOLDERS.email}
-					aria-invalid={!!error}
-					aria-describedby={error ? "email-error" : undefined}
-				/>
-			</div>
+      <div className="form-field">
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          required
+          placeholder={INFO_PACK_PLACEHOLDERS.email}
+          error={!!error}
+          aria-invalid={!!error}
+          aria-describedby={error ? "email-error" : undefined}
+        />
+      </div>
 
-			<FormError id="email-error" error={error} />
-		</div>
-	);
+      <FormError id="email-error" error={error} />
+    </div>
+  );
 }
