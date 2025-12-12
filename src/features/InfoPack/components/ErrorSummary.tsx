@@ -30,10 +30,7 @@ export default function ErrorSummary({ fieldErrors }: ErrorSummaryProps) {
 				{Object.entries(fieldErrors).map(([field, errs]) =>
 					errs ? (
 						<li key={field}>
-							<a
-								href={`#${field}`}
-								className="text-destructive font-medium"
-							>
+							<a href={`#${field}`} className="text-destructive font-medium">
 								{labels[field] ?? field}: {errs[0]}
 							</a>
 						</li>
