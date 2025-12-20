@@ -65,6 +65,10 @@ This checklist tracks required setup steps for deploying and maintaining Astro-b
 - [ ] DKIM configured
 - [ ] DMARC present (`p=none` initially)
 
+### Deliverability & brand (later)
+- [ ] DMARC reporting mailbox/alias created (e.g. `dmarc@domain`) *only if you plan to read reports*
+- [ ] Consider BIMI (logo in inbox) **later** — only after DMARC is enforced (`p=quarantine` or `p=reject`, `pct=100`) and SPF/DKIM are stable for all senders
+
 ---
 
 ## 5. Email – Transactional (Forms)
