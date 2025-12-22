@@ -23,7 +23,7 @@
 		"@tailwindcss/vite": "^4.1.17",
 		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
-		"astro": "^5.16.0",
+		"astro": "^5.16.6",
 		"canvas-confetti": "^1.9.4",
 		"gsap": "^3.13.0",
 		"react": "^19.2.0",
