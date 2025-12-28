@@ -7,7 +7,8 @@ export const POST: APIRoute = async ({ request }) => {
 	const apiKey = import.meta.env.RESEND_API_KEY;
 	const adminToken = import.meta.env.ADMIN_TEST_TOKEN;
 
-	if (!apiKey || !adminToken) return new Response("Server misconfigured", { status: 500 });
+	if (!apiKey || !adminToken)
+		return new Response("Server misconfigured", { status: 500 });
 
 	// Admin-only test endpoint: requires x-admin-token header to prevent public abuse.
 	const token = request.headers.get("x-admin-token");
