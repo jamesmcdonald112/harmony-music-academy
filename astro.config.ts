@@ -14,5 +14,15 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 
-	integrations: [react(), sentry()],
+	integrations: [
+		react(),
+		sentry({
+			sourceMapsUploadOptions: {
+				org: "james-mcdonald",
+				project: "javascript-astro-7j",
+				authToken: process.env.SENTRY_AUTH_TOKEN,
+			},
+			telemetry: false,
+		}),
+	],
 });
