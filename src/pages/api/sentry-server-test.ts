@@ -19,14 +19,14 @@ if (dsn && !Sentry.getClient()) {
 }
 
 export const GET: APIRoute = async ({ request }) => {
-	const adminToken = import.meta.env.ADMIN_TEST_TOKEN;
+	const adminToken = import.meta.env.ADMIN_TEST_TOKEN?.trim();
 
 	if (!dsn || !adminToken) {
 		return new Response("Server misconfigured", { status: 500 });
 	}
 
 	// Admin-only test endpoint: requires x-admin-token header to prevent public abuse.
-	const token = request.headers.get("x-admin-token");
+	const token = request.headers.get("x-admin-token")?.trim();
 	if (!token) return new Response("Unauthorized", { status: 401 });
 	if (token !== adminToken) return new Response("Forbidden", { status: 403 });
 
