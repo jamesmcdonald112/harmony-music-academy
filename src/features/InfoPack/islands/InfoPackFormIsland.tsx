@@ -59,6 +59,14 @@ export default function InfoPackFormIsland() {
 				loading={loading}
 				onSubmit={handleSubmit}
 			/>
+			<button
+				type="button"
+				onClick={() => {
+					throw new Error("Sentry client test");
+				}}
+			>
+				Click me
+			</button>
 		</>
 	);
 }
