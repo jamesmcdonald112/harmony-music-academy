@@ -1,0 +1,9 @@
+@layer utilities {
+
+  /* Reset list styling when needed (navs, custom lists) */
+  .list-reset {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}

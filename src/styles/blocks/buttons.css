@@ -1,0 +1,54 @@
+@layer components{
+  .btn {
+    @apply
+      inline-flex items-center justify-center
+      font-medium
+      rounded-(--radius)
+      transform-gpu
+      transition-transform duration-200 ease-out;
+  }
+
+  .btn-primary {
+    @apply
+      w-full
+      px-3.5 py-2.5 text-sm
+      font-medium
+      bg-primary text-primary-foreground
+      shadow-sm
+      hover:bg-primary-hover
+      hover:-translate-y-0.5 hover:shadow-lg
+      active:translate-y-0.5 active:shadow-xs
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+      disabled:opacity-60 disabled:cursor-not-allowed
+      disabled:translate-y-0 disabled:shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply
+      px-4 py-2
+      font-medium
+      bg-secondary text-secondary-foreground
+      shadow-sm
+      hover:-translate-y-0.5 hover:shadow-lg
+      active:translate-y-0.5 active:shadow-xs
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-secondary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+      disabled:opacity-60 disabled:cursor-not-allowed
+      disabled:translate-y-0 disabled:shadow-sm;
+  }
+
+  .btn-muted {
+    @apply
+      px-4 py-2
+      font-medium
+      bg-muted text-muted-foreground
+      shadow-sm
+      hover:-translate-y-0.5 hover:shadow-lg
+      active:translate-y-0.5 active:shadow-xs
+      focus-visible:outline-none
+      focus-visible:ring-2 focus-visible:ring-muted-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white
+      disabled:opacity-60 disabled:cursor-not-allowed
+      disabled:translate-y-0 disabled:shadow-sm;
+  }
+}

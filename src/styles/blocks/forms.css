@@ -1,0 +1,72 @@
+@layer components {
+
+  /* ----- Field ----- */
+  .form-field {
+    @apply mt-2.5;
+  }
+
+
+  /* ----- Inputs ----- */
+  .form-input {
+    @apply
+      block w-full
+      px-3.5 py-2
+      text-base text-foreground
+      bg-background
+      rounded-(--radius)
+      border border-border
+      placeholder:text-muted-foreground
+      hover:border-primary/40
+      transition-colors duration-150 ease-out
+      focus-visible:outline-none
+      focus:border-transparent
+      focus:ring-2 focus:ring-primary focus:shadow-sm;
+  }
+
+  /* ----- Textarea ----- */
+  .form-textarea {
+    @apply
+      block w-full
+      px-3.5 py-2
+      text-base text-foreground
+      bg-background
+      rounded-(--radius)
+      border border-border
+      placeholder:text-muted-foreground
+      hover:border-primary/40
+      transition-colors duration-150 ease-out
+      focus-visible:outline-none
+      focus:border-transparent
+      focus:ring-2 focus:ring-primary focus:shadow-sm
+      min-h-32;
+  }
+
+  /* ----- Label ----- */
+  .form-label {
+    @apply 
+      block 
+      text-sm/6 font-semibold text-foreground;
+  }
+
+    /* ----- Error ----- */
+
+  .form-error {
+    @apply
+      mt-1 h-2
+      text-xs
+      text-destructive
+      font-medium
+      animate-in fade-in-0 transition-all duration-1500;
+  }
+
+ .form-input-error {
+    @apply
+      border-transparent
+      hover:border-destructive/80
+      ring-1 ring-destructive/80
+      focus:border-destructive
+      focus:ring-2 focus:ring-destructive/80
+      focus:shadow-none
+      transition-all duration-300;
+  }
+}

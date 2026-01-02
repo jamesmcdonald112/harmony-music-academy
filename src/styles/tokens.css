@@ -1,0 +1,46 @@
+/* ------------------------
+   THEME
+------------------------- */
+@theme {
+  /* radius */
+  --radius: 0.5rem;
+
+  /* spacing scale (used by composition + utilities) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+
+  /* base */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-gray-900);
+
+  /* brand */
+  --color-primary: var(--color-blue-600);
+  --color-primary-hover: var(--color-blue-700);
+  --color-primary-foreground: var(--color-white);
+
+  --color-secondary: var(--color-sky-500);
+  --color-secondary-foreground: var(--color-white);
+
+  --color-accent: var(--color-amber-500);
+  --color-accent-foreground: var(--color-white);
+
+  /* muted surfaces */
+  --color-muted: var(--color-gray-100);
+  --color-muted-foreground: var(--color-gray-600);
+
+  /* borders & inputs */
+  --color-border: var(--color-gray-300);
+  --color-input: var(--color-gray-300);
+  --color-ring: var(--color-blue-600);
+
+  /* states */
+  --color-success: var(--color-green-100);
+  --color-success-foreground: var(--color-green-800);
+
+  --color-destructive: var(--color-red-600);
+  --color-destructive-foreground: var(--color-white);
+}

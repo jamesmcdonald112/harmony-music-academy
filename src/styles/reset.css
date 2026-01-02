@@ -1,0 +1,23 @@
+/* Tailwind uses Preflight. This file is ONLY for small extra defaults. */
+
+body {
+  min-height: 100vh; /* prevents short pages looking broken */
+}
+
+/* Optional: smooth scroll (some teams avoid this globally) */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Optional: respect reduced motion more aggressively */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
