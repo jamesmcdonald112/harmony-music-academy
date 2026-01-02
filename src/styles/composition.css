@@ -1,52 +1,72 @@
 @layer utilities {
-  /* ======================================
+	/* ======================================
      Composition primitives (layout & rhythm)
      ====================================== */
 
-  /* Vertical rhythm between direct children */
-  .flow > * + * {
-    /* --flow-space is meant to be set per container (layout knob), not as a global token.
+	/* Vertical rhythm between direct children */
+	.flow > * + * {
+		/* --flow-space is meant to be set per container (layout knob), not as a global token.
        Example: <section class="flow" style="--flow-space: 1.5rem">...
        If it's not set, it falls back to 1rem. */
-    margin-block-start: var(--flow-space, 1rem);
-  }
+		margin-block-start: var(--flow-space, 1rem);
+	}
 
-  /* Centered page/container wrapper */
-  .wrapper {
-    margin-inline: auto;
-    max-width: 80rem;
-    padding-inline: clamp(1rem, 4vw, 2rem);
-  }
+	/* Centered page/container wrapper */
+	.wrapper {
+		margin-inline: auto;
+		max-width: 80rem;
+		padding-inline: clamp(1rem, 4vw, 2rem);
+	}
 
-  /* Inline group that wraps naturally (menus, buttons, tags) */
-  .cluster {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--gap, 1rem);
-  }
+	/* Inline group that wraps naturally (menus, buttons, tags) */
+	.cluster {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: var(--gap, 1rem);
+	}
 
-  /* Vertical grouping with consistent spacing */
-  .stack {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap, 1rem);
-  }
+	/* Vertical grouping with consistent spacing */
+	.stack {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap, 1rem);
+	}
 
-  /* Flow/gap variants use the global spacing tokens from tokens.css (@theme).
+	/* Flow/gap variants use the global spacing tokens from tokens.css (@theme).
      These classes live here (composition), but the values (--space-*) live in tokens.css. */
 
-  /* Flow spacing variants */
-  .flow--xs { --flow-space: var(--space-2); }
-  .flow--sm { --flow-space: var(--space-3); }
-  .flow--md { --flow-space: var(--space-4); }
-  .flow--lg { --flow-space: var(--space-5); }
-  .flow--xl { --flow-space: var(--space-6); }
+	/* Flow spacing variants */
+	.flow--xs {
+		--flow-space: var(--space-2);
+	}
+	.flow--sm {
+		--flow-space: var(--space-3);
+	}
+	.flow--md {
+		--flow-space: var(--space-4);
+	}
+	.flow--lg {
+		--flow-space: var(--space-5);
+	}
+	.flow--xl {
+		--flow-space: var(--space-6);
+	}
 
-  /* Gap variants */
-  .gap--xs { --gap: var(--space-2); }
-  .gap--sm { --gap: var(--space-3); }
-  .gap--md { --gap: var(--space-4); }
-  .gap--lg { --gap: var(--space-5); }
-  .gap--xl { --gap: var(--space-6); }
+	/* Gap variants */
+	.gap--xs {
+		--gap: var(--space-2);
+	}
+	.gap--sm {
+		--gap: var(--space-3);
+	}
+	.gap--md {
+		--gap: var(--space-4);
+	}
+	.gap--lg {
+		--gap: var(--space-5);
+	}
+	.gap--xl {
+		--gap: var(--space-6);
+	}
 }

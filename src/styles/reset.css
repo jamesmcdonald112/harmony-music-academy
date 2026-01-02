@@ -1,23 +1,29 @@
 /* Tailwind uses Preflight. This file is ONLY for small extra defaults. */
 
 body {
-  min-height: 100vh; /* prevents short pages looking broken */
+	min-height: 100vh; /* prevents short pages looking broken */
 }
 
 /* Optional: smooth scroll (some teams avoid this globally) */
 html:focus-within {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 /* Optional: respect reduced motion more aggressively */
 @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		/* biome-ignore lint/complexity/noImportantStyles: reduced-motion overrides must win */
+		animation-duration: 0.01ms !important;
+		/* biome-ignore lint/complexity/noImportantStyles: reduced-motion overrides must win */
+		animation-iteration-count: 1 !important;
+		/* biome-ignore lint/complexity/noImportantStyles: reduced-motion overrides must win */
+		transition-duration: 0.01ms !important;
+		/* biome-ignore lint/complexity/noImportantStyles: reduced-motion overrides must win */
+		scroll-behavior: auto !important;
+	}
 }
