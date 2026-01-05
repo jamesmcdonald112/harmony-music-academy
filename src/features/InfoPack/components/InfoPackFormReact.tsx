@@ -3,6 +3,7 @@ import { FORM_LIMITS } from "../config/form-limits";
 import ErrorSummary from "./ErrorSummary";
 import EmailInput from "./inputs/EmailInput";
 import FullNameInput from "./inputs/FullNameInput";
+import HoneypotWebsiteInput from "./inputs/HoneypotWebsiteInput";
 import MessageInput from "./inputs/MessageInput";
 import PhoneInput from "./inputs/PhoneInput";
 import StudentAgeInput from "./inputs/StudentAgeInput";
@@ -46,6 +47,7 @@ export default function InfoPackFormReact({
 					<EmailInput error={errors.email?.[0]} />
 					<PhoneInput error={errors.phone?.[0]} />
 					<StudentAgeInput error={errors.studentAge?.[0]} />
+					<HoneypotWebsiteInput />
 					<MessageInput maxLength={MESSAGE_MAX} error={errors.message?.[0]} />
 				</div>
 

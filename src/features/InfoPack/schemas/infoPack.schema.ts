@@ -34,4 +34,10 @@ export const infoPackSchema = z.object({
 		.trim()
 		.max(MESSAGE.max, INFO_PACK_ERRORS.message.max)
 		.optional(),
+	website: z
+		.string()
+		.trim()
+		.nullable()
+		.optional()
+		.transform((v) => v ?? ""),
 });
