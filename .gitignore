@@ -27,3 +27,7 @@ pnpm-debug.log*
 .idea/
 .vercel
 .env*.local
+
+
+# test files
+src/pages/test.astro

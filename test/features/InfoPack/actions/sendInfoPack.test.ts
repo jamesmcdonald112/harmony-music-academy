@@ -23,6 +23,13 @@ const baseInput = {
 	website: "",
 };
 
+function makeContext(origin?: string | null) {
+	const headers: Record<string, string> = origin ? { origin } : {};
+	return {
+		request: new Request("http://localhost", { headers }),
+	};
+}
+
 describe("sendInfoPackHandler", () => {
 	beforeEach(() => {
 		captureExceptionMock.mockReset();
@@ -32,7 +39,7 @@ describe("sendInfoPackHandler", () => {
 	test("calls email service for human input", async () => {
 		deliverInfoPackMock.mockResolvedValueOnce(undefined);
 
-		const result = await sendInfoPackHandler(baseInput);
+		const result = await sendInfoPackHandler(baseInput, makeContext());
 
 		expect(deliverInfoPackMock).toHaveBeenCalledOnce();
 
@@ -45,22 +52,48 @@ describe("sendInfoPackHandler", () => {
 	});
 
 	test("skips email service when honeypot triggers", async () => {
-		const result = await sendInfoPackHandler({ ...baseInput, website: "x" });
+		const result = await sendInfoPackHandler(
+			{ ...baseInput, website: "x" },
+			makeContext(),
+		);
 
 		expect(deliverInfoPackMock).not.toHaveBeenCalled();
 		expect(result).toEqual({ success: true, message: "OK" });
 		expect(captureExceptionMock).not.toHaveBeenCalled();
 	});
 
+	test("rejects disallowed origin", async () => {
+		const originalAllowed = process.env.ALLOWED_ORIGINS;
+		process.env.ALLOWED_ORIGINS = "https://good.example";
+
+		let thrown: unknown;
+		try {
+			await sendInfoPackHandler(baseInput, makeContext("https://bad.example"));
+		} catch (err) {
+			thrown = err;
+		} finally {
+			process.env.ALLOWED_ORIGINS = originalAllowed;
+		}
+
+		expect(deliverInfoPackMock).not.toHaveBeenCalled();
+		expect(thrown).toBeInstanceOf(ActionError);
+		expect((thrown as ActionError).code).toBe("FORBIDDEN");
+	});
+
 	test("wraps email errors in ActionError and captures", async () => {
+		const originalAllowed = process.env.ALLOWED_ORIGINS;
+		process.env.ALLOWED_ORIGINS = "";
+
 		const emailError = new Error("fail");
 		deliverInfoPackMock.mockRejectedValueOnce(emailError);
 
 		let thrown: unknown;
 		try {
-			await sendInfoPackHandler(baseInput);
+			await sendInfoPackHandler(baseInput, makeContext());
 		} catch (err) {
 			thrown = err;
+		} finally {
+			process.env.ALLOWED_ORIGINS = originalAllowed;
 		}
 
 		expect(deliverInfoPackMock).toHaveBeenCalledOnce();

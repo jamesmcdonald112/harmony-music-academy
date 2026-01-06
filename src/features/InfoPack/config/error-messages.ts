@@ -30,6 +30,7 @@ export const INFO_PACK_ERRORS = {
 	},
 	action: {
 		emailFailed: "We couldn’t send your request. Please try again.",
+		forbidden: "Request blocked.",
 		internalServerError: "Something went wrong. Please try again later.",
 		unknown: "Unexpected error",
 	},
